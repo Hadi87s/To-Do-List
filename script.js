@@ -44,7 +44,7 @@ function addToTasks(text) {
     const newTask = createTaskElement(text);
     resultsWindow.appendChild(newTask);
     elementsIn++;
-    console.log(elementsIn);
+    // console.log(elementsIn); debugging statement.
     const currentHeight = parseInt(window.getComputedStyle(resultsWindow).height, 10);
     resultsWindow.style.height = `${currentHeight + 41}%`;
 
