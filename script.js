@@ -2,6 +2,7 @@ let myTextinput = document.querySelector(".text-input");
 let mySubmitBtn = document.querySelector(".add");
 let resultsWindow = document.querySelector(".tasks")
 let clearBtn = document.querySelector(".clear");
+let taskCount = document.querySelector(".task-count");
 let countIndex;
 let elementsIn = 0;
 
@@ -43,6 +44,7 @@ function addToTasks(text) {
     const newTask = createTaskElement(text);
     resultsWindow.appendChild(newTask);
     elementsIn++;
+    console.log(elementsIn);
     const currentHeight = parseInt(window.getComputedStyle(resultsWindow).height, 10);
     resultsWindow.style.height = `${currentHeight + 41}%`;
 
@@ -53,6 +55,9 @@ function addToStorage(key, text) {
     const task = { id: key, text };
     window.localStorage.setItem(key, JSON.stringify(task));
     countIndex++;
+    taskCount.innerHTML = "";
+    taskCount.appendChild(document.createTextNode(`${elementsIn} Tasks`));
+
     window.localStorage.setItem("counter", countIndex);
 }
 
@@ -77,6 +82,8 @@ function removeFromStorage(val) {
             if (task.text === val) {
                 window.localStorage.removeItem(i);
                 elementsIn--;
+                taskCount.innerHTML = "";
+                taskCount.appendChild(document.createTextNode(`${elementsIn} Tasks`));
                 for (let j = i; j < counter - 1; j++) {
                     const nextTaskData = window.localStorage.getItem(j + 1);
                     window.localStorage.setItem(j, nextTaskData);
@@ -104,5 +111,8 @@ clearBtn.onclick = (event) => {
     window.localStorage.clear();
     resultsWindow.style.height = "3em";
     countIndex = 0;
+    elementsIn = 0;
+    taskCount.innerHTML = "";
+    taskCount.appendChild(document.createTextNode(`${elementsIn} Tasks`));
 };
 
