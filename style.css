@@ -22,6 +22,13 @@ html {
     --ls: clamp(-1.75px, -0.25vw, -3.5px);
 }
 
+.content .title .logo {
+    width: 100px;
+    height: 100px;
+
+}
+
+
 body {
     font-family: "Work Sans", serif;
     background-color: #121212;
@@ -192,9 +199,7 @@ body {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 70px;
     /* font-size: var(--fs); */
-    font-weight: 800;
     letter-spacing: var(--ls);
     position: absolute;
     overflow: hidden;
@@ -425,4 +430,15 @@ footer span {
     color: var(--primary-color);
     font-weight: bold;
     transition: 350ms;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: 300ms;
+    font-weight: bold;
+}
+
+a:hover {
+    color: var(--secondary-color);
 }
